@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>The 303 Rough Draft</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE 303 Daily Sports Content</title>
+    <style>
+        /* --- CSS STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #f0f0f0;
+            background: #1a1a2e;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            background: #16213e;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border-bottom: 3px solid #4e2a84;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 3px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo::before {
+            content: '';
+            width: 50px;
+            height: 50px;
+            background-image: url('https://static.wixstatic.com/media/9fdb3b_a709f01d98994db2986f6d488ee0abb4~mv2.jpg/v1/fill/w_58,h_60,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/The_303_Logo_edited.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: #f0f0f0; text-decoration: none; font-weight: 600; transition: color 0.3s; font-size: 1.05rem; cursor: pointer; }
+        .nav-links a:hover { color: #b6a0d7; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4e2a84 0%, #6a3fa6 50%, #8b5fd1 100%);
+            color: white;
+            padding: 6rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; font-weight: 900; letter-spacing: -1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.5rem; max-width: 700px; margin: 0 auto 2rem; opacity: 0.95; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; }
+
+        /* Grid Containers */
+        .container { max-width: 1400px; margin: 0 auto; padding: 4rem 5%; }
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #8b5fd1, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- UPDATED ARTICLE GRID (4 COLUMNS) --- */
+        .articles-grid-preview, .articles-grid-full, .podcast-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Forced 4 columns */
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-card, .podcast-card {
+            background: linear-gradient(135deg, #2d3561 0%, #1e2749 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            transition: all 0.4s;
+            cursor: pointer;
+            border: 2px solid rgba(78,42,132,0.3);
+        }
+
+        .article-card:hover, .podcast-card:hover { transform: translateY(-10px); border-color: #8b5fd1; }
+        .article-image { width: 100%; height: 200px; background: #16213e; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+        .article-content { padding: 1.2rem; }
+        .article-category { color: #ff6b35; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; margin-bottom: 0.5rem; }
+        .article-title { font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; line-height: 1.3; }
+        .article-excerpt { color: #b6a0d7; font-size: 0.9rem; margin-bottom: 1rem; }
+
+        .podcast-card { padding: 1.5rem; text-align: center; }
+        .podcast-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+        /* Buttons */
+        .cta-button, .view-all-button {
+            background: #ff6b35;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover { background: #ff5722; transform: scale(1.05); }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow-y: auto;
+        }
+        .modal-content {
+            background: #1a1a2e;
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 800px;
+            border: 2px solid #4e2a84;
+            position: relative;
+        }
+        .close { position: absolute; right: 20px; top: 10px; font-size: 35px; cursor: pointer; color: #ff6b35; }
+
+        /* Footer */
+        .newsletter-footer { background: #16213e; padding: 4rem 5%; text-align: center; border-top: 3px solid #4e2a84; }
+        .newsletter-form { display: flex; gap: 1rem; max-width: 600px; margin: 2rem auto; }
+        .newsletter-input { flex: 1; padding: 1rem; border-radius: 50px; border: 2px solid #4e2a84; background: #1a1a2e; color: white; outline: none; }
+        .success-message { display: none; color: #4caf50; font-weight: bold; }
+        .success-message.show { display: block; }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+        
+        @media (max-width: 1100px) {
+            .articles-grid-preview, .articles-grid-full, .podcast-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .articles-grid-preview, .articles-grid-full, .podcast-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .newsletter-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo" onclick="showHome()">THE 303</div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showHome()">Home</a></li>
+            <li><a href="#" onclick="showArticlesPage()">Articles</a></li>
+            <li><a href="#podcasts">Podcasts</a></li>
+            <li><a href="https://www.youtube.com/@The303SportsNetwork" target="_blank">Newscast</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id="homePage">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>THE 303</h1>
+            <p>Daily <span id="rotate-text" style="border-right: 3px solid #ff6b35; padding-right: 5px;">Sports</span> Content</p>
+            <a href="#articles-preview" class="cta-button">Explore Our Stories</a>
+        </div>
+    </section>
+
+    <div class="container" id="articles-preview">
+        <h2 class="section-title">Latest Articles</h2>
+        <div class="articles-grid-preview" id="previewGrid">
+            </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button class="view-all-button" onclick="showArticlesPage()">View All Articles →</button>
+        </div>
+    </div>
+
+    <section class="podcasts-section" id="podcasts">
+        <div class="container">
+            <h2 class="section-title">Our Podcasts</h2>
+            <div class="podcast-grid" id="podcastGrid">
+                </div>
+        </div>
+    </section>
+
+    <footer class="newsletter-footer">
+        <h2>Stay in the Loop</h2>
+        <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+            <button type="submit" class="cta-button">Subscribe</button>
+        </form>
+        <div class="success-message" id="successMessage">Welcome to the network!</div>
+        <p style="margin-top: 2rem; opacity: 0.5;">&copy; 2026 The 303 Sports Network.</p>
+    </footer>
+</div>
+
+<div id="articlesPage" style="display: none;">
+    <div class="container">
+        <button class="cta-button" onclick="showHome()" style="margin-bottom: 2rem;">← Back Home</button>
+        <h2 class="section-title">Article Archive</h2>
+        <div class="articles-grid-full" id="fullArticlesGrid"></div>
+    </div>
+</div>
+
+<div id="articleModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('articleModal')">&times;</span>
+        <div id="articleContent"></div>
+    </div>
+</div>
+
+<div id="podcastModal" class="modal">
+    <div class="modal-content" style="text-align: center;">
+        <span class="close" onclick="closeModal('podcastModal')">&times;</span>
+        <div id="podcastContent"></div>
+    </div>
+</div>
+
+<script>
+    // --- DATABASE ---
+    const articles = [
+        { emoji: "🏈", category: "Football", title: "Breaking Down the Big Game", excerpt: "Deep dive into this week's tactics.", date: "Jan 18, 2026" },
+        { emoji: "🏀", category: "Basketball", title: "March Madness Preview", excerpt: "Analyzing the top tournament seeds.", date: "Jan 18, 2026" },
+        { emoji: "⚾", category: "Baseball", title: "Spring Training Insights", excerpt: "Which prospects are turning heads?", date: "Jan 17, 2026" },
+        { emoji: "⚽", category: "Soccer", title: "Transfer Window Update", excerpt: "The biggest moves across Europe.", date: "Jan 17, 2026" },
+        { emoji: "🏒", category: "Hockey", title: "Mid-Season Power Rankings", excerpt: "Who is the favorite for the Cup?", date: "Jan 15, 2026" },
+        { emoji: "🎯", category: "Features", title: "The Mental Game", excerpt: "How stars handle high pressure.", date: "Jan 14, 2026" }
+    ];
+
+    const podcasts = [
+        { icon: "🎙️", title: "The 303 Sports Show" },
+        { icon: "🎧", title: "303 Hoops" },
+        { icon: "📻", title: "The PreWrap" },
+        { icon: "🏈", title: "Dialed In" },
+        { icon: "🏀", title: "Starting Three" },
+        { icon: "⚾", title: "Stoppage Time" },
+        { icon: "⚽", title: "Center Cup" },
+        { icon: "🎯", title: "Overtime" }
+    ];
+
+    // --- TEXT ROTATION LOGIC ---
+    const words = ["Sports", "Football", "Basketball", "Baseball", "Soccer", "Hockey", "Analytics"];
+    let wordIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+
+    function animateHeroText() {
+        const target = document.getElementById("rotate-text");
+        if (!target) return;
+
+        const currentWord = words[wordIdx];
+        
+        if (isDeleting) {
+            target.textContent = currentWord.substring(0, charIdx - 1);
+            charIdx--;
+        } else {
+            target.textContent = currentWord.substring(0, charIdx + 1);
+            charIdx++;
+        }
+
+        let typeSpeed = isDeleting ? 75 : 150;
+
+        if (!isDeleting && charIdx === currentWord.length) {
+            typeSpeed = 2000; 
+            isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+            isDeleting = false;
+            wordIdx = (wordIdx + 1) % words.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(animateHeroText, typeSpeed);
+    }
+
+    // --- UI RENDERING ---
+    function init() {
+        renderPreviews();
+        renderPodcasts();
+        animateHeroText(); // Start the rotation
+    }
+
+    function renderPreviews() {
+        const previewGrid = document.getElementById('previewGrid');
+        previewGrid.innerHTML = articles.slice(0, 4).map((art, idx) => `
+            <div class="article-card" onclick="openArticle(${idx})">
+                <div class="article-image">${art.emoji}</div>
+                <div class="article-content">
+                    <div class="article-category">${art.category}</div>
+                    <h3 class="article-title">${art.title}</h3>
+                    <p class="article-excerpt">${art.excerpt}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderPodcasts() {
+        const podGrid = document.getElementById('podcastGrid');
+        podGrid.innerHTML = podcasts.map((pod, idx) => `
+            <div class="podcast-card" onclick="openPodcast(${idx})">
+                <div class="podcast-icon">${pod.icon}</div>
+                <h3 class="podcast-title">${pod.title}</h3>
+            </div>
+        `).join('');
+    }
+
+    function showHome() {
+        document.getElementById('homePage').style.display = 'block';
+        document.getElementById('articlesPage').style.display = 'none';
+        window.scrollTo(0, 0);
+    }
+
+    function showArticlesPage() {
+        document.getElementById('homePage').style.display = 'none';
+        document.getElementById('articlesPage').style.display = 'block';
+        const fullGrid = document.getElementById('fullArticlesGrid');
+        fullGrid.innerHTML = articles.map((art, idx) => `
+            <div class="article-card" onclick="openArticle(${idx})">
+                <div class="article-image">${art.emoji}</div>
+                <div class="article-content">
+                    <div class="article-category">${art.category}</div>
+                    <h3 class="article-title">${art.title}</h3>
+                    <p class="article-excerpt">${art.excerpt}</p>
+                </div>
+            </div>
+        `).join('');
+        window.scrollTo(0, 0);
+    }
+
+    function openArticle(idx) {
+        const art = articles[idx];
+        document.getElementById('articleContent').innerHTML = `
+            <h2 class="section-title" style="text-align:left; font-size: 2rem;">${art.title}</h2>
+            <p style="color:#ff6b35; margin-bottom:1rem">${art.category} | ${art.date}</p>
+            <p style="font-size:1.1rem; color: #b6a0d7;">Full journalistic coverage for "${art.title}" goes here.</p>
+        `;
+        document.getElementById('articleModal').style.display = 'block';
+    }
+
+    function openPodcast(idx) {
+        const pod = podcasts[idx];
+        document.getElementById('podcastContent').innerHTML = `
+            <div style="font-size:5rem">${pod.icon}</div>
+            <h2 class="section-title">${pod.title}</h2>
+            <button class="cta-button">Listen Now</button>
+        `;
+        document.getElementById('podcastModal').style.display = 'block';
+    }
+
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        this.style.display = 'none';
+        document.getElementById('successMessage').classList.add('show');
+    });
+
+    window.onclick = function(event) {
+        if (event.target.className === 'modal') { event.target.style.display = "none"; }
+    }
+
+    // Initialize everything once DOM is ready
+    document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>

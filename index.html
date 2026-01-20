@@ -1,25 +1,14 @@
-<!DOCTYPE html>
 <html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>The 303 Hub</title>
-    <link rel="stylesheet" href="./style.css">
-
-  </head>
-    
-  <body>
-  <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE 303 Daily Sports Content</title>
+    <title>The 303 | Daily Sports Content</title>
     <style>
         /* --- CSS STYLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            line-height: 1.2;
             color: #f0f0f0;
             background: #1a1a2e;
             scroll-behavior: smooth;
@@ -70,18 +59,38 @@
         .nav-links a:hover { color: #b6a0d7; }
 
         /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #4e2a84 0%, #6a3fa6 50%, #8b5fd1 100%);
-            color: white;
-            padding: 6rem 5%;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero h1 { font-size: 4rem; margin-bottom: 1rem; font-weight: 900; letter-spacing: -1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .hero p { font-size: 1.5rem; max-width: 700px; margin: 0 auto 2rem; opacity: 0.95; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; }
-
+        /* --- Updated Hero Section --- */
+.hero {
+    /* Replace the URL below with your hosted image */
+    background: linear-gradient(rgba(26, 26, 46, 0.6), rgba(78, 42, 132, 0.7)), 
+      url("https://www.explore.com/img/gallery/view-chicagos-skyline-from-an-underrated-destination-instead-of-this-tourist-trap/l-intro-1704400150.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Creates a parallax scrolling effect */
+    color: white;
+    padding: 8rem 5%; /* Increased padding for more impact */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid #ff6b35;
+}
+/* Update this specific selector in your CSS */
+.hero p { 
+    font-size: 1.5rem; 
+    max-width: 700px; 
+    margin: 0 auto 3.5rem; /* The third value (3.5rem) adds the bottom spacing */
+    opacity: 0.95; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    font-weight: 600; 
+}
+.hero h1 { 
+    font-size: 5rem; /* Larger for better visual hierarchy */
+    margin-bottom: 0.5rem; 
+    font-weight: 900; 
+    letter-spacing: -2px; 
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.8); /* Stronger shadow for readability */
+}
         /* Grid Containers */
         .container { max-width: 1400px; margin: 0 auto; padding: 4rem 5%; }
         .section-title {
@@ -95,10 +104,9 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- UPDATED ARTICLE GRID (4 COLUMNS) --- */
         .articles-grid-preview, .articles-grid-full, .podcast-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Forced 4 columns */
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
@@ -169,8 +177,7 @@
         .success-message { display: none; color: #4caf50; font-weight: bold; }
         .success-message.show { display: block; }
 
-        /* --- RESPONSIVE BREAKPOINTS --- */
-        
+        /* Responsive */
         @media (max-width: 1100px) {
             .articles-grid-preview, .articles-grid-full, .podcast-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -178,6 +185,39 @@
             .articles-grid-preview, .articles-grid-full, .podcast-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
             .newsletter-form { flex-direction: column; }
+        }
+      /* --- Special Modal Headline --- */
+/* Stacked Overlay Headline */
+        .headline-stack {
+            position: relative;
+            text-align: center;
+            margin: 3rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 120px;
+        }
+
+        .bg-text {
+            font-size: 3.5rem;
+            color: Gray; /* Gray */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            position: absolute;
+            z-index: 1;
+            white-space: nowrap;
+        }
+
+        .fg-text {
+            font-size: 2.5rem; /* Larger and bolder */
+            color: #ff6b35;    /* Bright Orange */
+            font-weight: 900;
+            position: absolute;
+            z-index: 2;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -206,8 +246,7 @@
 
     <div class="container" id="articles-preview">
         <h2 class="section-title">Latest Articles</h2>
-        <div class="articles-grid-preview" id="previewGrid">
-            </div>
+        <div class="articles-grid-preview" id="previewGrid"></div>
         <div style="text-align: center; margin-top: 2rem;">
             <button class="view-all-button" onclick="showArticlesPage()">View All Articles →</button>
         </div>
@@ -216,8 +255,7 @@
     <section class="podcasts-section" id="podcasts">
         <div class="container">
             <h2 class="section-title">Our Podcasts</h2>
-            <div class="podcast-grid" id="podcastGrid">
-                </div>
+            <div class="podcast-grid" id="podcastGrid"></div>
         </div>
     </section>
 
@@ -257,16 +295,11 @@
 <script>
     // --- DATABASE ---
     const articles = [
-    { 
-        emoji: "🏈", 
-        category: "Football", 
-        title: "Fourth and Eight. Fourth and Four.", 
-        excerpt: "How moments of true excellence ended the lovable loser era in Bears history.", 
-        date: "Jan 19, 2026",
-        author: "Ryan Hinske",
-        subhead: "How moments of true excellence ended the lovable loser era in Bears history",
-        body: `
-            <p style='font-style: italic; font-size: 1.2rem; color: #b6a0d7; margin-bottom: 2rem;'>How moments of true excellence ended the lovable loser era in Bears history</p>
+        { 
+            emoji: "🏈", category: "Football", title: "Fourth and Eight. Fourth and Four.", 
+            excerpt: "How moments of true excellence ended the lovable loser era in Bears history.", 
+            date: "Jan 19, 2026", author: "Ryan Hinske",
+            body: `<p> <p style='font-style: italic; font-size: 1.2rem; color: #b6a0d7; margin-bottom: 2rem;'>How moments of true excellence ended the lovable loser era in Bears history</p>
             
             <p style='margin-bottom: 1.5rem;'>Midwesterners know what "fake winter" is. As the Chicago Bears surged towards the playoffs, the city experienced record snowfall in November, then "fool's spring" in early January. The day before the Bears vs Packers Wild Card thriller at Soldier Field, temperatures reached 60 degrees.</p>
 
@@ -304,66 +337,29 @@
 
             <p style='margin-bottom: 1.5rem;'>Yes, there were interceptions. Probably a few too many foolish throws. But Caleb Williams is never out of the game, and the Bears fanbase will never forget the 2025 season. And that is a feeling thousands of young Chicago fans have never experienced.</p>
 
-            <p style='margin-bottom: 1.5rem;'>The bear has spent many winters in hibernation. It took the Iceman to finally wake him up.</p>
-        `
-    },
-    { emoji: "🏀", category: "Basketball", title: "March Madness Preview", excerpt: "Analyzing the top tournament seeds.", date: "Jan 18, 2026" },
-    { emoji: "⚾", category: "Baseball", title: "Spring Training Insights", excerpt: "Which prospects are turning heads?", date: "Jan 17, 2026" },
-    { emoji: "⚽", category: "Soccer", title: "Transfer Window Update", excerpt: "The biggest moves across Europe.", date: "Jan 17, 2026" },
-    { emoji: "🏒", category: "Hockey", title: "Mid-Season Power Rankings", excerpt: "Who is the favorite for the Cup?", date: "Jan 15, 2026" },
-    { emoji: "🎯", category: "Features", title: "The Mental Game", excerpt: "How stars handle high pressure.", date: "Jan 14, 2026" }
-];
-
-    const podcasts = [
-        { icon: "🎙️", title: "The 303 Sports Show" },
-        { icon: "🎧", title: "303 Hoops" },
-        { icon: "📻", title: "The PreWrap" },
-        { icon: "🏈", title: "Dialed In" },
-        { icon: "🏀", title: "Starting Three" },
-        { icon: "⚾", title: "Stoppage Time" },
-        { icon: "⚽", title: "Center Cup" },
-        { icon: "🎯", title: "Overtime" }
+            <p style='margin-bottom: 1.5rem;'>The bear has spent many winters in hibernation. It took the Iceman to finally wake him up.</p></p>` // Truncated for brevity
+        },
+        { emoji: "🏀", category: "Basketball", title: "March Madness Preview", excerpt: "Analyzing the top tournament seeds.", date: "Jan 18, 2026" },
+        { emoji: "⚾", category: "Baseball", title: "Spring Training Insights", excerpt: "Which prospects are turning heads?", date: "Jan 17, 2026" },
+        { emoji: "⚽", category: "Soccer", title: "Transfer Window Update", excerpt: "The biggest moves across Europe.", date: "Jan 17, 2026" },
+        { emoji: "🏒", category: "Hockey", title: "Mid-Season Power Rankings", excerpt: "Who is the favorite for the Cup?", date: "Jan 15, 2026" },
+        { emoji: "🎯", category: "Features", title: "The Mental Game", excerpt: "How stars handle high pressure.", date: "Jan 14, 2026" }
     ];
 
-    // --- TEXT ROTATION LOGIC ---
-    const words = ["Sports", "Football", "Basketball", "Baseball", "Soccer", "Hockey", "Analytics"];
-    let wordIdx = 0;
-    let charIdx = 0;
-    let isDeleting = false;
+    const podcasts = [
+        { title: "303 Hoops", image: "https://mail.google.com/mail/u/1?ui=2&ik=0f8e3ef6ab&attid=0.5&permmsgid=msg-f:1854772016093673929&th=19bd7952569939c9&view=fimg&fur=ip&permmsgid=msg-f:1854772016093673929&sz=s0-l75-ft&attbid=ANGjdJ8KpoTq35Qli6Z2938MRMjlQfPc6j7Mc5sHdCRP9Gt8pjiKv4y1XErARMPDN3MBISgrpR6YNHEsZ0Gxs7q-SAG3CNf6zJkjvER0vvr9Kv_DEeAoH7TG9fT33vY&disp=emb&realattid=ii_mklinav14&zw", link: "https://youtube.com/playlist?list=PLyZG2tQyljiuo11geZtX0kkS9d6F8YncG&si=WlhA_vmsheuUX_SW" },
+        { title: "The PreWrap", image: "https://mail.google.com/mail/u/1?ui=2&ik=0f8e3ef6ab&attid=0.4&permmsgid=msg-f:1854772016093673929&th=19bd7952569939c9&view=fimg&fur=ip&permmsgid=msg-f:1854772016093673929&sz=s0-l75-ft&attbid=ANGjdJ8eHTrVKCkt9GEdfIVKZvQ0ea8zPwnFjduuEfnLPnmGbXpi52SO5ybvGMYRYnTbaV9_FMgd5ZQcc9K8QMFq1QYE8e0ClIomP3mjOEeZZsXh2sgCC_ozO1R8OJE&disp=emb&realattid=ii_mklin4y33&zw", link: "https://youtube.com/playlist?list=PLyZG2tQyljit5OJJGyHqWvkNkKSDLn8SL&si=WQkiHDr5cpK2iaRy" },
+        { title: "Dialed In", image: "https://mail.google.com/mail/u/1?ui=2&ik=0f8e3ef6ab&attid=0.2&permmsgid=msg-f:1854772016093673929&th=19bd7952569939c9&view=fimg&fur=ip&permmsgid=msg-f:1854772016093673929&sz=s0-l75-ft&attbid=ANGjdJ-Mvn9ThsL7yAlOp0XaduoNyy6XlAnBzTNrjyuyMCqpKcH5-O2Yvkj8vIv8c3etxOElyTwLMevJIEfrH8qPNZAgYntR10n1kFx9zHnlXF4zcX53rcAIOMNaCG4&disp=emb&realattid=ii_mklimt061&zw", link: "https://youtube.com/playlist?list=PLyZG2tQyljiuQRdYqHn9hQSUOQAdYrv6f&si=YJzJM_JUE6vxScBz" },
+        { title: "Starting Three", image: "https://mail.google.com/mail/u/1?ui=2&ik=0f8e3ef6ab&attid=0.6&permmsgid=msg-f:1854772016093673929&th=19bd7952569939c9&view=fimg&fur=ip&permmsgid=msg-f:1854772016093673929&sz=s0-l75-ft&attbid=ANGjdJ_h0TfCDoK3w1mGIYDCyVQOJzNqLh7shM-V8CaUQmxWfVx6nryQjQ7R-JGi2aW0VDTro3MBti8oY0W3in83P1-yQCpXAK-pFgonWbbRAnJ1LlhxI3GbLw1oN0g&disp=emb&realattid=ii_mklinqos5&zw", link: "https://youtube.com/playlist?list=PLyZG2tQyljit_XGsDn18BoEZUwpJruMDD&si=3815OTt2n5-EHcnW" },
+        { title: "Stoppage Time", image: "https://mail.google.com/mail/u/1?ui=2&ik=0f8e3ef6ab&attid=0.3&permmsgid=msg-f:1854772016093673929&th=19bd7952569939c9&view=fimg&fur=ip&permmsgid=msg-f:1854772016093673929&sz=s0-l75-ft&attbid=ANGjdJ-XZ4kRGehsvuJDzOhsRANkVoBkA5suIaH_HoJCcAf_hiHNmulY0bg_WPfYi3Sp-bRLiB2Q5iJ987nkhFLWKQFjxSdnPpfIadXZqeG-ImmXw3bphcbRLSmJ0iw&disp=emb&realattid=ii_mklin1bf2&zw", link: "https://youtube.com/playlist?list=PLyZG2tQyljivRsA2dF9G6PgqHzKwGBRLS&si=fRYo0BsSyw_HS8QR" },
+        { title: "Center Cup", image: "https://mail.google.com/mail/u/1?ui=2&ik=0f8e3ef6ab&attid=0.1&permmsgid=msg-f:1854772016093673929&th=19bd7952569939c9&view=fimg&fur=ip&permmsgid=msg-f:1854772016093673929&sz=s0-l75-ft&attbid=ANGjdJ-mTEqoPf4wjoiPOCuRY1UG1dMg2jUL1Gsw_CQpdJS_uf4f9RDkHTzf5bkH-uIsx1-kYHNTIkiyI6HqOwrsdqC1GOPy5uFp-9-uGh_lVJph1Ze3wwN_C-xfYSY&disp=emb&realattid=ii_mklimqoj0&zw", link: "https://youtube.com/playlist?list=PLyZG2tQyljiueaEdp9F6o9FTN_Sh9ILkR&si=H8i1dV7WS_6NHuXG" }
+    ];
 
-    function animateHeroText() {
-        const target = document.getElementById("rotate-text");
-        if (!target) return;
-
-        const currentWord = words[wordIdx];
-        
-        if (isDeleting) {
-            target.textContent = currentWord.substring(0, charIdx - 1);
-            charIdx--;
-        } else {
-            target.textContent = currentWord.substring(0, charIdx + 1);
-            charIdx++;
-        }
-
-        let typeSpeed = isDeleting ? 75 : 150;
-
-        if (!isDeleting && charIdx === currentWord.length) {
-            typeSpeed = 2000; 
-            isDeleting = true;
-        } else if (isDeleting && charIdx === 0) {
-            isDeleting = false;
-            wordIdx = (wordIdx + 1) % words.length;
-            typeSpeed = 500;
-        }
-
-        setTimeout(animateHeroText, typeSpeed);
-    }
-
-    // --- UI RENDERING ---
+    // --- LOGIC ---
     function init() {
         renderPreviews();
         renderPodcasts();
-        animateHeroText(); // Start the rotation
+        animateHeroText();
     }
 
     function renderPreviews() {
@@ -384,12 +380,27 @@
         const podGrid = document.getElementById('podcastGrid');
         podGrid.innerHTML = podcasts.map((pod, idx) => `
             <div class="podcast-card" onclick="openPodcast(${idx})">
-                <div class="podcast-icon">${pod.icon}</div>
+                <div class="podcast-icon">
+                    <img src="${pod.image}" alt="${pod.title}" style="width:75%; height:100%; object-fit:cover; border-radius:15%;">
+                </div>
                 <h3 class="podcast-title">${pod.title}</h3>
             </div>
         `).join('');
     }
 
+    function openPodcast(idx) {
+        const pod = podcasts[idx];
+        document.getElementById('podcastContent').innerHTML = `
+            <div style="display:inline-block; width:150px; height:150px; border-radius:50%; overflow:hidden; margin-bottom:1rem;">
+                <img src="${pod.image}" alt="${pod.title}" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <h2 class="section-title">${pod.title}</h2>
+            <a href="${pod.link}" target="_blank" class="cta-button">Listen Now</a>
+        `;
+        document.getElementById('podcastModal').style.display = 'block';
+    }
+
+    // Modal, Navigation, and Animation Helpers
     function showHome() {
         document.getElementById('homePage').style.display = 'block';
         document.getElementById('articlesPage').style.display = 'none';
@@ -406,7 +417,6 @@
                 <div class="article-content">
                     <div class="article-category">${art.category}</div>
                     <h3 class="article-title">${art.title}</h3>
-                    <p class="article-excerpt">${art.excerpt}</p>
                 </div>
             </div>
         `).join('');
@@ -414,58 +424,52 @@
     }
 
     function openArticle(idx) {
-    const art = articles[idx];
-    
-    // Check if article has full body content
-    if (art.body) {
-        document.getElementById('articleContent').innerHTML = `
-            <h2 class="section-title" style="text-align:left; font-size: 2rem; margin-bottom: 0.5rem;">${art.title}</h2>
-            <p style="color:#ff6b35; margin-bottom:2rem; font-weight: 600;">${art.category} | ${art.date} | By ${art.author}</p>
-            <div style="font-size:1.05rem; line-height:1.8; color: #e0e0e0;">
-                ${art.body}
-            </div>
-        `;
-    } else {
-        // Placeholder for articles without full content
-        document.getElementById('articleContent').innerHTML = `
-            <h2 class="section-title" style="text-align:left; font-size: 2rem;">${art.title}</h2>
-            <p style="color:#ff6b35; margin-bottom:1rem">${art.category} | ${art.date}</p>
-            <p style="font-size:1.1rem; color: #b6a0d7;">Full journalistic coverage for "${art.title}" goes here.</p>
-        `;
-    }
-    
-    document.getElementById('articleModal').style.display = 'block';
-}
+        const art = articles[idx];
+        let titleHtml;
 
-    function openPodcast(idx) {
-        const pod = podcasts[idx];
-        document.getElementById('podcastContent').innerHTML = `
-            <div style="font-size:5rem">${pod.icon}</div>
-            <h2 class="section-title">${pod.title}</h2>
-            <button class="cta-button">Listen Now</button>
+        // Apply special overlay only to the Bears article
+        if (art.title.includes("Fourth and Eight")) {
+            titleHtml = `
+                <div class="headline-stack">
+                    <div class="bg-text">Fourth and Eight</div>
+                    <div class="fg-text">Fourth and Four</div>
+                </div>`;
+        } else {
+            // Standard title for all other articles
+            titleHtml = `<h2 class="section-title" style="text-align:left; font-size: 2rem; margin-bottom: 0.5rem;">${art.title}</h2>`;
+        }
+
+        document.getElementById('articleContent').innerHTML = `
+            ${titleHtml}
+            <p style="color:#ff6b35; text-align:center; margin-bottom:2rem;">${art.category} | ${art.date}</p>
+            <div style="font-size:1.05rem; line-height:1.8; color: #e0e0e0;">${art.body || art.excerpt}</div>
         `;
-        document.getElementById('podcastModal').style.display = 'block';
+        document.getElementById('articleModal').style.display = 'block';
     }
 
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        this.style.display = 'none';
-        document.getElementById('successMessage').classList.add('show');
-    });
-
+    
     window.onclick = function(event) {
         if (event.target.className === 'modal') { event.target.style.display = "none"; }
     }
 
-    // Initialize everything once DOM is ready
+    // Hero Text Animation
+    const words = ["Sports", "Football", "Basketball", "Baseball", "Soccer", "Hockey", "Analytics"];
+    let wordIdx = 0, charIdx = 0, isDeleting = false;
+
+    function animateHeroText() {
+        const target = document.getElementById("rotate-text");
+        if (!target) return;
+        const currentWord = words[wordIdx];
+        target.textContent = isDeleting ? currentWord.substring(0, charIdx - 1) : currentWord.substring(0, charIdx + 1);
+        charIdx = isDeleting ? charIdx - 1 : charIdx + 1;
+        let typeSpeed = isDeleting ? 75 : 150;
+        if (!isDeleting && charIdx === currentWord.length) { typeSpeed = 2000; isDeleting = true; }
+        else if (isDeleting && charIdx === 0) { isDeleting = false; wordIdx = (wordIdx + 1) % words.length; typeSpeed = 500; }
+        setTimeout(animateHeroText, typeSpeed);
+    }
+
     document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
-</html>
-    <script  src="./script.js"></script>
-
-  </body>
-  
 </html>

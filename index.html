@@ -257,13 +257,62 @@
 <script>
     // --- DATABASE ---
     const articles = [
-        { emoji: "🏈", category: "Football", title: "Fourth and Eight. Fourth and Four.", excerpt: "How moments of true excellence ended the “lovable loser” era in Bears history.", date: "Jan 19, 2026" },
-        { emoji: "🏀", category: "Basketball", title: "March Madness Preview", excerpt: "Analyzing the top tournament seeds.", date: "Jan 18, 2026" },
-        { emoji: "⚾", category: "Baseball", title: "Spring Training Insights", excerpt: "Which prospects are turning heads?", date: "Jan 17, 2026" },
-        { emoji: "⚽", category: "Soccer", title: "Transfer Window Update", excerpt: "The biggest moves across Europe.", date: "Jan 17, 2026" },
-        { emoji: "🏒", category: "Hockey", title: "Mid-Season Power Rankings", excerpt: "Who is the favorite for the Cup?", date: "Jan 15, 2026" },
-        { emoji: "🎯", category: "Features", title: "The Mental Game", excerpt: "How stars handle high pressure.", date: "Jan 14, 2026" }
-    ];
+    { 
+        emoji: "🏈", 
+        category: "Football", 
+        title: "Fourth and Eight. Fourth and Four.", 
+        excerpt: "How moments of true excellence ended the "lovable loser" era in Bears history.", 
+        date: "Jan 19, 2026",
+        author: "Ryan Hinske",
+        subhead: "How moments of true excellence ended the "lovable loser" era in Bears history",
+        body: `
+            <p style="font-style: italic; font-size: 1.2rem; color: #b6a0d7; margin-bottom: 2rem;">How moments of true excellence ended the "lovable loser" era in Bears history</p>
+            
+            <p style="margin-bottom: 1.5rem;">Midwesterners know what "fake winter" is. As the Chicago Bears surged towards the playoffs, the city experienced record snowfall in November, then "fool's spring" in early January. The day before the Bears vs Packers Wild Card thriller at Soldier Field, temperatures reached 60 degrees.</p>
+
+            <p style="margin-bottom: 1.5rem;">Then came "second winter." Soldier Field gave way to a functioning snowglobe just an hour before kickoff. The temperatures presented a true test to players who had become more acclimated to domed stadiums up north.</p>
+
+            <p style="margin-bottom: 1.5rem;">In the dead of winter, enter "Iceman."</p>
+
+            <p style="margin-bottom: 1.5rem;">In the most streamed game in NFL history, the game-sealing wide receiver DJ Moore said it best: "When the lights are bright, he's brighter than them lights out there."</p>
+
+            <p style="margin-bottom: 1.5rem;">"Iceman" is, of course, quarterback Caleb Williams. Williams said on FOX NFL Sunday in November he was cool with the nickname because "Ice is still. Ice is calm, but underneath is pure energy."</p>
+
+            <p style="margin-bottom: 1.5rem;">On fourth and eight late in the fourth quarter, Williams rolled left, looking for a prayer. Rome Odunze was available near the far sideline, but to reach him, Williams was forced to cock his arm back on the run, open his body towards the receiver, and throw a pass so off balance it looked eerily similar to the "Jumpman" logo that has immortalized another Chicago legend.</p>
+
+            <p style="margin-bottom: 1.5rem;">And yes, Caleb Williams could already be called a Chicago legend, but more on that soon.</p>
+
+            <p style="margin-bottom: 1.5rem;">A week later, he did it again – this time on backpeddling away from multiple relentless Rams pass rushers and heaving a moonball to Cole Kmet in the back corner of the endzone on fourth and four.</p>
+
+            <p style="margin-bottom: 1.5rem;">Raised in a Cleveland sports household, I was not shocked when my Dad said, "I'm tired of waiting for the Browns to host a playoff game. Let's go see the Bears." So we did.</p>
+
+            <p style="margin-bottom: 1.5rem;">Browns and Bears fans understand each other. Of course my Dad had to sport his Browns cap in Chicago, and Bears fans were nice to him "as long as he's not a cheesehead." Just two years ago I was at a Browns versus Bears game in Cleveland, where there was remarkably little hostility between the fanbases. Why? Because they're lovable losers. It's cute when they make a little run with fun players like Baker Mayfield and Caleb Williams.</p>
+
+            <p style="margin-bottom: 1.5rem;">That all ended in front of my father's eyes on fourth and eight. In a strange way, it was like his Browns fandom reversed the bad juju that has tempered Soldier Field for years. When the Bears made poor plays in the first half, he felt their pain. When they stormed back and took the lead, it was a new feeling. And I think, for now, it bought him a little more patience and hope that Cleveland's day will come.</p>
+
+            <p style="margin-bottom: 1.5rem;">For both teams, it has to start with the quarterback. Since Jim McMahon – the quarterback that led a defensive-heavy Bears team to its lone Super Bowl victory – was traded to the Chargers, 39 starting quarterbacks have tried and failed to cement their names into true Bears legend.</p>
+
+            <p style="margin-bottom: 1.5rem;">Fans and analysts like to talk about "flashes." Though Williams's rookie season doesn't jump out of the stat sheet, we heard plenty of, "we've seen flashes."</p>
+
+            <p style="margin-bottom: 1.5rem;">The pair of fourth downs that bent both the laws of physics and the minds of just about every football fan soars far beyond flashes. These are moments. Moments define careers. They build dynasties.</p>
+
+            <p style="margin-bottom: 1.5rem;">This is how Kansas City built theirs. Patrick Mahomes won an MVP in his second season by throwing for 50 touchdowns and leading the Chiefs to a 12-4 record. But Williams has more than doubled Mahomes's game-winning drives in their first two full seasons.</p>
+
+            <p style="margin-bottom: 1.5rem;">In Mahomes's first full season, he played two playoff games and suffered a crushing overtime loss to Tom Brady in the Patriots. In Williams's second, he and his Bears fell in overtime to a Rams team that has been no stranger to winning big playoff games with Matthew Stafford.</p>
+
+            <p style="margin-bottom: 1.5rem;">I'm not trying to compare Williams to Mahomes – he's got a eons to go to even sniff Mahomes's success – but when it comes to the moments, Williams is already building a legacy no Chicago quarterback has ever built. And I mean ever.</p>
+
+            <p style="margin-bottom: 1.5rem;">Yes, there were interceptions. Probably a few too many foolish throws. But Caleb Williams is never out of the game, and the Bears fanbase will never forget the 2025 season. And that is a feeling thousands of young Chicago fans have never experienced.</p>
+
+            <p style="margin-bottom: 1.5rem;">The bear has spent many winters in hibernation. It took the Iceman to finally wake him up.</p>
+        `
+    },
+    { emoji: "🏀", category: "Basketball", title: "March Madness Preview", excerpt: "Analyzing the top tournament seeds.", date: "Jan 18, 2026" },
+    { emoji: "⚾", category: "Baseball", title: "Spring Training Insights", excerpt: "Which prospects are turning heads?", date: "Jan 17, 2026" },
+    { emoji: "⚽", category: "Soccer", title: "Transfer Window Update", excerpt: "The biggest moves across Europe.", date: "Jan 17, 2026" },
+    { emoji: "🏒", category: "Hockey", title: "Mid-Season Power Rankings", excerpt: "Who is the favorite for the Cup?", date: "Jan 15, 2026" },
+    { emoji: "🎯", category: "Features", title: "The Mental Game", excerpt: "How stars handle high pressure.", date: "Jan 14, 2026" }
+];
 
     const podcasts = [
         { icon: "🎙️", title: "The 303 Sports Show" },
@@ -365,14 +414,28 @@
     }
 
     function openArticle(idx) {
-        const art = articles[idx];
+    const art = articles[idx];
+    
+    // Check if article has full body content
+    if (art.body) {
+        document.getElementById('articleContent').innerHTML = `
+            <h2 class="section-title" style="text-align:left; font-size: 2rem; margin-bottom: 0.5rem;">${art.title}</h2>
+            <p style="color:#ff6b35; margin-bottom:2rem; font-weight: 600;">${art.category} | ${art.date} | By ${art.author}</p>
+            <div style="font-size:1.05rem; line-height:1.8; color: #e0e0e0;">
+                ${art.body}
+            </div>
+        `;
+    } else {
+        // Placeholder for articles without full content
         document.getElementById('articleContent').innerHTML = `
             <h2 class="section-title" style="text-align:left; font-size: 2rem;">${art.title}</h2>
             <p style="color:#ff6b35; margin-bottom:1rem">${art.category} | ${art.date}</p>
             <p style="font-size:1.1rem; color: #b6a0d7;">Full journalistic coverage for "${art.title}" goes here.</p>
         `;
-        document.getElementById('articleModal').style.display = 'block';
     }
+    
+    document.getElementById('articleModal').style.display = 'block';
+}
 
     function openPodcast(idx) {
         const pod = podcasts[idx];

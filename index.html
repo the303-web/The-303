@@ -1,10 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The 303 | Daily Sports Content</title>
     <style>
-        /* --- CSS STYLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -14,7 +14,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Navigation */
         nav {
             background: #16213e;
             padding: 1rem 5%;
@@ -24,7 +23,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             border-bottom: 3px solid #4e2a84;
         }
-
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -32,7 +30,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             font-size: 2.5rem;
             font-weight: 900;
@@ -42,8 +39,8 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            text-decoration: none;
         }
-
         .logo::before {
             content: '';
             width: 50px;
@@ -53,14 +50,13 @@
             background-position: center;
             border-radius: 8px;
         }
-
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: #f0f0f0; text-decoration: none; font-weight: 600; transition: color 0.3s; font-size: 1.05rem; cursor: pointer; }
+        .nav-links a { color: #f0f0f0; text-decoration: none; font-weight: 600; transition: color 0.3s; font-size: 1.05rem; }
         .nav-links a:hover { color: #b6a0d7; }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            background: linear-gradient(rgba(26, 26, 46, 0.6), rgba(78, 42, 132, 0.7)), 
+            background: linear-gradient(rgba(26,26,46,0.6), rgba(78,42,132,0.7)),
               url("https://www.explore.com/img/gallery/view-chicagos-skyline-from-an-underrated-destination-instead-of-this-tourist-trap/l-intro-1704400150.jpg");
             background-size: cover;
             background-position: center;
@@ -68,27 +64,12 @@
             color: white;
             padding: 8rem 5%;
             text-align: center;
-            position: relative;
-            overflow: hidden;
             border-bottom: 5px solid #ff6b35;
         }
-        .hero p { 
-            font-size: 1.5rem; 
-            max-width: 700px; 
-            margin: 0 auto 3.5rem;
-            opacity: 0.95; 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            font-weight: 600; 
-        }
-        .hero h1 { 
-            font-size: 5rem;
-            margin-bottom: 0.5rem; 
-            font-weight: 900; 
-            letter-spacing: -2px; 
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
-        }
-        /* Grid Containers */
+        .hero h1 { font-size: 5rem; margin-bottom: 0.5rem; font-weight: 900; letter-spacing: -2px; text-shadow: 3px 3px 10px rgba(0,0,0,0.8); }
+        .hero p { font-size: 1.5rem; max-width: 700px; margin: 0 auto 3.5rem; opacity: 0.95; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; }
+
+        /* Grids */
         .container { max-width: 1400px; margin: 0 auto; padding: 4rem 5%; }
         .section-title {
             font-size: 2.8rem;
@@ -100,14 +81,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .articles-grid-preview, .articles-grid-full, .podcast-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-
         .article-card, .podcast-card {
             background: linear-gradient(135deg, #2d3561 0%, #1e2749 100%);
             border-radius: 12px;
@@ -116,8 +95,9 @@
             transition: all 0.4s;
             cursor: pointer;
             border: 2px solid rgba(78,42,132,0.3);
+            text-decoration: none;
+            display: block;
         }
-
         .article-card:hover, .podcast-card:hover { transform: translateY(-10px); border-color: #8b5fd1; }
         .article-image { width: 100%; height: 200px; background: #16213e; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
         .article-content { padding: 1.2rem; }
@@ -125,8 +105,11 @@
         .article-title { font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; line-height: 1.3; }
         .article-excerpt { color: #b6a0d7; font-size: 0.9rem; margin-bottom: 1rem; }
 
+        /* Podcast cards */
         .podcast-card { padding: 1.5rem; text-align: center; }
-        .podcast-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .podcast-icon { width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .podcast-icon img { max-height: 100%; width: auto; border-radius: 12px; }
+        .podcast-title { font-size: 1.2rem; color: #fff; font-weight: 700; margin-top: 0.5rem; }
 
         /* Buttons */
         .cta-button, .view-all-button {
@@ -143,10 +126,53 @@
             display: inline-block;
             text-transform: uppercase;
         }
-
         .cta-button:hover { background: #ff5722; transform: scale(1.05); }
 
-        /* Modals */
+        /* Single Article Page */
+        .article-full {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+        .article-full-body {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #e0e0e0;
+        }
+        .article-full-body p { margin-bottom: 1.5rem; }
+
+        /* Stacked headline */
+        .headline-stack {
+            position: relative;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 120px;
+            margin-bottom: 1rem;
+        }
+        .bg-text {
+            font-size: 3.5rem;
+            color: gray;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            position: absolute;
+            z-index: 1;
+            white-space: nowrap;
+        }
+        .fg-text {
+            font-size: 2.5rem;
+            color: #ff6b35;
+            font-weight: 900;
+            position: absolute;
+            z-index: 2;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+            white-space: nowrap;
+        }
+
+        /* Podcast modal */
         .modal {
             display: none;
             position: fixed;
@@ -164,6 +190,7 @@
             max-width: 800px;
             border: 2px solid #4e2a84;
             position: relative;
+            text-align: center;
         }
         .close { position: absolute; right: 20px; top: 10px; font-size: 35px; cursor: pointer; color: #ff6b35; }
 
@@ -175,66 +202,13 @@
         .success-message.show { display: block; }
 
         /* Responsive */
-        @media (max-width: 1100px) {
-            .articles-grid-preview, .articles-grid-full, .podcast-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        @media (max-width: 1100px) { .articles-grid-preview, .articles-grid-full, .podcast-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
             .articles-grid-preview, .articles-grid-full, .podcast-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
             .newsletter-form { flex-direction: column; }
-        }
-        /* --- Special Modal Headline --- */
-        .headline-stack {
-            position: relative;
-            text-align: center;
-            margin: 0rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 120px;
-        }
-
-        .bg-text {
-            font-size: 3.5rem;
-            color: Gray;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 800;
-            position: absolute;
-            z-index: 1;
-            white-space: nowrap;
-        }
-
-        .fg-text {
-            font-size: 2.5rem;
-            color: #ff6b35;
-            font-weight: 900;
-            position: absolute;
-            z-index: 2;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(0,0,0,0.8);
-            white-space: nowrap;
-        }
-        .podcast-icon { 
-            width: 100%;
-            height: 160px;
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            margin-bottom: 1rem; 
-        }
-
-        .podcast-icon img {
-            max-height: 100%;
-            width: auto;
-            border-radius: 12px;
-        }
-
-        .podcast-title { 
-            font-size: 1.2rem; 
-            color: #fff; 
-            font-weight: 700;
-            margin-top: 0.5rem;
+            .bg-text { font-size: 2rem; }
+            .fg-text { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -242,22 +216,23 @@
 
 <nav>
     <div class="nav-container">
-        <div class="logo" onclick="showHome()">THE 303</div>
+        <a class="logo" href="?">THE 303</a>
         <ul class="nav-links">
-            <li><a href="#" onclick="showHome()">Home</a></li>
-            <li><a href="#" onclick="showArticlesPage()">Articles</a></li>
-            <li><a href="#podcasts">Podcasts</a></li>
+            <li><a href="?">Home</a></li>
+            <li><a href="?page=articles">Articles</a></li>
+            <li><a href="?#podcasts">Podcasts</a></li>
             <li><a href="https://www.youtube.com/@The303SportsNetwork" target="_blank">Newscast</a></li>
         </ul>
     </div>
 </nav>
 
-<div id="homePage">
+<!-- HOME PAGE -->
+<div id="homePage" style="display:none;">
     <section class="hero">
         <div class="hero-content">
             <h1>THE 303</h1>
             <p>Daily <span id="rotate-text" style="border-right: 3px solid #ff6b35; padding-right: 5px;">Sports</span> Content</p>
-            <a href="#articles-preview" class="cta-button">Explore Our Stories</a>
+            <a href="?#articles-preview" class="cta-button">Explore Our Stories</a>
         </div>
     </section>
 
@@ -265,11 +240,11 @@
         <h2 class="section-title">Latest Articles</h2>
         <div class="articles-grid-preview" id="previewGrid"></div>
         <div style="text-align: center; margin-top: 2rem;">
-            <button class="view-all-button" onclick="showArticlesPage()">View All Articles →</button>
+            <a href="?page=articles" class="view-all-button">View All Articles →</a>
         </div>
     </div>
 
-    <section class="podcasts-section" id="podcasts">
+    <section id="podcasts">
         <div class="container">
             <h2 class="section-title">Our Podcasts</h2>
             <div class="podcast-grid" id="podcastGrid"></div>
@@ -278,7 +253,7 @@
 
     <footer class="newsletter-footer">
         <h2>Stay in the Loop</h2>
-        <form class="newsletter-form" id="newsletterForm">
+        <form class="newsletter-form" onsubmit="handleSubscribe(event)">
             <input type="email" class="newsletter-input" placeholder="Enter your email" required>
             <button type="submit" class="cta-button">Subscribe</button>
         </form>
@@ -287,140 +262,108 @@
     </footer>
 </div>
 
-<div id="articlesPage" style="display: none;">
+<!-- ARTICLES LIST PAGE -->
+<div id="articlesPage" style="display:none;">
     <div class="container">
-        <button class="cta-button" onclick="showHome()" style="margin-bottom: 2rem;">← Back Home</button>
+        <a href="?" class="cta-button" style="margin-bottom: 2rem; display:inline-block;">← Back Home</a>
         <h2 class="section-title">Article Archive</h2>
         <div class="articles-grid-full" id="fullArticlesGrid"></div>
     </div>
 </div>
 
-<div id="articleModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('articleModal')">&times;</span>
-        <div id="articleContent"></div>
+<!-- SINGLE ARTICLE PAGE -->
+<div id="articlePage" style="display:none;">
+    <div class="article-full">
+        <a href="?page=articles" class="cta-button" style="margin-bottom: 2rem; display:inline-block;">← All Articles</a>
+        <div id="articlePageContent"></div>
     </div>
 </div>
 
+<!-- PODCAST MODAL (kept as modal since podcasts link out) -->
 <div id="podcastModal" class="modal">
-    <div class="modal-content" style="text-align: center;">
-        <span class="close" onclick="closeModal('podcastModal')">&times;</span>
+    <div class="modal-content">
+        <span class="close" onclick="closePodcastModal()">&times;</span>
         <div id="podcastContent"></div>
     </div>
 </div>
 
 <script>
-    // --- DATABASE ---
     const articles = [
         { 
+            slug: "washington-post-sports-desk",
             emoji: "📰", category: "Media", title: "In Memoriam for the Washington Post Sports Desk",
             excerpt: "The eulogy given by a kid who grew up on the Post.",
             date: "Feb. 13, 2026", author: "Khuyen Dinh",
-            body: `<p style='font-style: italic; font-size: 1.2rem; color: #b6a0d7; margin-bottom: 2rem;'>The eulogy given by a kid who grew up on the Post</p>
-
-            <p style='margin-bottom: 1.5rem;'>When I was a sophomore in high school, we had to do some form of literature and/or media analysis in front of the class. I had been immersed in student journalism since I was in the fourth grade — I still have the t-shirt from my elementary school's student news podcast. I'm unsure what news we were breaking other than new lunch items that were introduced in the cafeteria or who won the student council races. But from there, I went to the newspaper, to the yearbook, and again another student newspaper… let's just say I knew exactly what I wanted to do from a young age.</p>
-
-            <p style='margin-bottom: 1.5rem;'>I have a distinct memory of showing my class of sophomores in Honors English in the school that was built like a prison, the Washington Post's newest motto: Democracy Dies in Darkness. I was amazed at the time, and just so moved at how powerful journalism could be. I can fully admit that I did not even truly understand the depth of that phrase. I was working on my high school's yearbook, as the photo editor so my experience in breaking huge news to society was extremely minimal.</p>
-
-            <p style='margin-bottom: 1.5rem;'>But I stood in front of everyone and announced that the Washington Post had released this new slogan in 2017. This was the first slogan to be adopted by the Post in its 140-year history. I thought this was genius — and something I could completely believe in and be proud of. Imagine me, a 16-year-old standing in front of a group of her peers who were definitely not listening to me, passionately lecturing them on how important journalism is and how it keeps the country accountable.</p>
-
-            <p style='margin-bottom: 1.5rem;'>As I got older, I got more specific with my passions. I wanted to cover human interest and sports stories. I loved learning more about people and getting to tell their stories to share with others. I loved the adrenaline rush of being in sports and getting to be on the inside of these cool stories and games.</p>
-
-            <p style='margin-bottom: 1.5rem;'>I graduated from the University of Virginia with a degree in media stories with a focus on sports media and journalism. I spent my undergraduate days photographing football games, working on the broadcast crew for basketball and analysing 90s cinema and athletes who utilized their platform. After two years in "the real world", I wanted to go back to school. I never knew exactly where I wanted to end up when I was younger. I always envisioned it being back in D.C. but inside the city proper. But in my twenties, I added California to my list of two locations. I think deep down, I always wanted to go back and know that the Post would hopefully be waiting for me.</p>
-
-            <p style='margin-bottom: 1.5rem;'>When watching interactions between my professor and old co-workers, I failed to realize that one of their connections other than ESPN was the Washington Post. They mourned over the sports desk. I thought back to the day before, where one of my old mentors recommended that I pitch to the sports desk "even though they are shutting down the desk".</p>
-
-            <p style='margin-bottom: 1.5rem;'>How ironic it is to be at such an exciting event for my career knowing that this industry is slowly decreasing in momentum. But it's not like I was completely unaware. Most everyone I met professionally before rejoining the classroom had been laid off in media. I had one editor that would get a new piercing every time she was laid off due to the monopolization of modern media conglomerates. I'd been laid off too — I remember the day so clearly. I had just returned from taking the day off for my 24th birthday and the entire staff had been summoned to a last minute meeting. The language that was used was so vague and corporate; I knew they were trying to overcomplicate the truth. The truth was that we were all out of jobs after this meeting ended.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Getting laid off almost feels like a rite of passage for journalists — it absolutely should not be. I've been attending conferences for journalism and student journalism since I was 15 years old, meeting professionals in the industry and strengthening the idea that journalism matters. Why should we even have to say it? It matters.</p>
-
-            <p style='margin-bottom: 1.5rem;'>To me, The Washington Post has always occupied the same journalistic space as The New York Times. Maybe that perspective comes from growing up in the D.C. suburbs, but this loss still feels deeply personal and undeniably consequential. I believe in my colleagues and in my mentors, and I believe journalism will endure — but it would be naïve to ignore how unforgiving the current media landscape has become. I'm in my early twenties, and I've met people both younger and older who refuse to walk away from this work. I urge my classmates to do the same. Choosing a career where you're constantly watching your back is daunting, but it's also revealing: if the work didn't matter, it wouldn't be under such relentless pressure.</p>`
-        },
-         { 
-            emoji: "⚽", category: "Soccer", title: "Finding Football Identity in London",
-            excerpt: "A Medill journalism student discovers belonging through the beautiful game abroad.",
-            date: "Feb. 11, 2026", author: "Kevin Lu",
-            body: `<p style='font-style: italic; font-size: 1.2rem; color: #b6a0d7; margin-bottom: 2rem;'>Medill Explores: Finding Football Identity in London</p>
-
-            <p style='margin-bottom: 1.5rem;'>LONDON — Medill Explores sends Northwestern's journalism graduate students beyond Chicago to chase stories. Some fellows are living their dreams at the Super Bowl in San Francisco and enjoying the sunshine shed on the golf course, while others are covering thoughtful social issues in other countries. But for those of us in London, it became an opportunity to discover something deeper: our identity.</p>
-
-            <p style='margin-bottom: 1.5rem;'>While my classmates marveled at the UK's enviable work-life balance — something the US might struggle to compete with — I, as a sports media student, found my identity through football.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Visiting Tottenham Hotspur Stadium on our first day made a dream come true: my first time inside a Premier League facility. But as we took the train back to London, the initial excitement faded. By day's end, I realized it was just a pitch with empty stands and maintenance machines working the grass. I tried imagining it packed with supporters, their chants echoing through the bowl... but my imagination fell short.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Because this wasn't my team.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Premier League matches weren't on our schedule, as most of them happen on weekends — the days we arrived and departed. Even free time wouldn't help either.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Panicking about leaving without experiencing a real match, I spotted a beacon of hope: a Friday night London derby in the English Football League Championship, England's second tier. Charlton Athletic would host Queens Park Rangers at The Valley.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Though just a second-tier fixture, it drew me and Max Bevington, my classmate for this trip and co-host on The 303 Sports' soccer podcast. Both Charlton and QPR once shone in the Premier League, though fierce competition and the brutal promotion battle had pushed them from the spotlight.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Charlton holds special meaning for Chinese soccer fans — Zheng Zhi, former Chinese national team captain, played there for three seasons. As someone who stood out from an entire continent to compete in arguably the world's most competitive league, while few Asian players could survive (even now), Zheng's stint remains memorable.</p>
-
-            <p style='margin-bottom: 1.5rem;'>QPR dominated possession early, but Charlton capitalized on rare chances, launching counterattacks after winning the ball back and creating shots while the visitors managed none. The match ended in a tedious 0-0 draw, but what intrigued us were the fans' chants, yelling different words and lines for every situation: goal kicks, quality defense, and the opponent's mistakes.</p>
-
-            <p style='margin-bottom: 1.5rem;'>At halftime, we stepped out for food and beer, discussing the UK rule against bringing drinks into the stands. Some Americans — you can tell from their accents — passed by, later sitting near us. They verbally sparred with QPR fans across the way, cheering for Charlton with... American football gestures.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Were they Charlton supporters? Absolutely no. Just random American expats in London who showed up because it was "Friday Football Night". Sounds American, right?</p>
-
-            <p style='margin-bottom: 1.5rem;'>But these moments revealed something profound: identity.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Before entering the stadium, we crossed through Charlton's residential streets, watching households emerge from their homes and march toward the ground. As we entered the area regulated by mounted police, who patrolled and separated home and away fans, supporters began singing everything good about their team while mocking QPR.</p>
-
-            <p style='margin-bottom: 1.5rem;'>It reminded me of our Spurs tour. Though the stadium was empty, our guide Nick Burns, who's been a lifelong Spurs advocate, knew every detail of the facility. More than that, he expressed unwavering loyalty to the team, despite the Spurs being fairly mediocre over a decade, having just broken their title drought in 2025 with the Europa League, their first trophy since the 2008 League Cup and only their second this century.</p>
-
-            <p style='margin-bottom: 1.5rem;'>From that moment, I understood the connection to a club — that its starting point, where you fall in love beyond the glory, shapes identity. Our Medill Explores shepherd, Candy Lee, mentioned that people in the UK often identify themselves by which club they support before anything else.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Thinking back to myself and my Liverpool FC fandom. Though I have no roots in Merseyside and I've never been there, I've identified as a Kop since I first saw Luis Suárez revive Liverpool nearly a decade ago. I was mesmerized by the sea of red in the Anfield stands, surging like waves.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Those shallow early memories brought me into the world of football. And now, standing in the first row of The Valley, I finally understood what that meant.</p>`
+            body: `
+            <p style='font-style: italic; font-size: 1.2rem; color: #b6a0d7; margin-bottom: 2rem;'>The eulogy given by a kid who grew up on the Post</p>
+            <p>When I was a sophomore in high school, we had to do some form of literature and/or media analysis in front of the class. I had been immersed in student journalism since I was in the fourth grade — I still have the t-shirt from my elementary school's student news podcast. I'm unsure what news we were breaking other than new lunch items that were introduced in the cafeteria or who won the student council races. But from there, I went to the newspaper, to the yearbook, and again another student newspaper… let's just say I knew exactly what I wanted to do from a young age.</p>
+            <p>I have a distinct memory of showing my class of sophomores in Honors English in the school that was built like a prison, the Washington Post's newest motto: Democracy Dies in Darkness. I was amazed at the time, and just so moved at how powerful journalism could be. I can fully admit that I did not even truly understand the depth of that phrase. I was working on my high school's yearbook, as the photo editor so my experience in breaking huge news to society was extremely minimal.</p>
+            <p>But I stood in front of everyone and announced that the Washington Post had released this new slogan in 2017. This was the first slogan to be adopted by the Post in its 140-year history. I thought this was genius — and something I could completely believe in and be proud of. Imagine me, a 16-year-old standing in front of a group of her peers who were definitely not listening to me, passionately lecturing them on how important journalism is and how it keeps the country accountable.</p>
+            <p>As I got older, I got more specific with my passions. I wanted to cover human interest and sports stories. I loved learning more about people and getting to tell their stories to share with others. I loved the adrenaline rush of being in sports and getting to be on the inside of these cool stories and games.</p>
+            <p>I graduated from the University of Virginia with a degree in media stories with a focus on sports media and journalism. I spent my undergraduate days photographing football games, working on the broadcast crew for basketball and analysing 90s cinema and athletes who utilized their platform. After two years in "the real world", I wanted to go back to school. I never knew exactly where I wanted to end up when I was younger. I always envisioned it being back in D.C. but inside the city proper. But in my twenties, I added California to my list of two locations. I think deep down, I always wanted to go back and know that the Post would hopefully be waiting for me.</p>
+            <p>When watching interactions between my professor and old co-workers, I failed to realize that one of their connections other than ESPN was the Washington Post. They mourned over the sports desk. I thought back to the day before, where one of my old mentors recommended that I pitch to the sports desk "even though they are shutting down the desk".</p>
+            <p>How ironic it is to be at such an exciting event for my career knowing that this industry is slowly decreasing in momentum. But it's not like I was completely unaware. Most everyone I met professionally before rejoining the classroom had been laid off in media. I had one editor that would get a new piercing every time she was laid off due to the monopolization of modern media conglomerates. I'd been laid off too — I remember the day so clearly. I had just returned from taking the day off for my 24th birthday and the entire staff had been summoned to a last minute meeting. The language that was used was so vague and corporate; I knew they were trying to overcomplicate the truth. The truth was that we were all out of jobs after this meeting ended.</p>
+            <p>Getting laid off almost feels like a rite of passage for journalists — it absolutely should not be. I've been attending conferences for journalism and student journalism since I was 15 years old, meeting professionals in the industry and strengthening the idea that journalism matters. Why should we even have to say it? It matters.</p>
+            <p>To me, The Washington Post has always occupied the same journalistic space as The New York Times. Maybe that perspective comes from growing up in the D.C. suburbs, but this loss still feels deeply personal and undeniably consequential. I believe in my colleagues and in my mentors, and I believe journalism will endure — but it would be naïve to ignore how unforgiving the current media landscape has become. I'm in my early twenties, and I've met people both younger and older who refuse to walk away from this work. I urge my classmates to do the same. Choosing a career where you're constantly watching your back is daunting, but it's also revealing: if the work didn't matter, it wouldn't be under such relentless pressure.</p>`
         },
         { 
+            slug: "football-identity-london",
+            emoji: "🇬🇧", category: "Soccer", title: "Finding Football Identity in London",
+            excerpt: "A Medill journalism student discovers belonging through the beautiful game abroad.",
+            date: "Feb. 11, 2026", author: "Kevin Lu",
+            body: `
+            <p style='font-style: italic; font-size: 1.2rem; color: #b6a0d7; margin-bottom: 2rem;'>Medill Explores: Finding Football Identity in London</p>
+            <p>LONDON — Medill Explores sends Northwestern's journalism graduate students beyond Chicago to chase stories. Some fellows are living their dreams at the Super Bowl in San Francisco and enjoying the sunshine shed on the golf course, while others are covering thoughtful social issues in other countries. But for those of us in London, it became an opportunity to discover something deeper: our identity.</p>
+            <p>While my classmates marveled at the UK's enviable work-life balance — something the US might struggle to compete with — I, as a sports media student, found my identity through football.</p>
+            <p>Visiting Tottenham Hotspur Stadium on our first day made a dream come true: my first time inside a Premier League facility. But as we took the train back to London, the initial excitement faded. By day's end, I realized it was just a pitch with empty stands and maintenance machines working the grass. I tried imagining it packed with supporters, their chants echoing through the bowl... but my imagination fell short.</p>
+            <p>Because this wasn't my team.</p>
+            <p>Premier League matches weren't on our schedule, as most of them happen on weekends — the days we arrived and departed. Even free time wouldn't help either.</p>
+            <p>Panicking about leaving without experiencing a real match, I spotted a beacon of hope: a Friday night London derby in the English Football League Championship, England's second tier. Charlton Athletic would host Queens Park Rangers at The Valley.</p>
+            <p>Though just a second-tier fixture, it drew me and Max Bevington, my classmate for this trip and co-host on The 303 Sports' soccer podcast. Both Charlton and QPR once shone in the Premier League, though fierce competition and the brutal promotion battle had pushed them from the spotlight.</p>
+            <p>Charlton holds special meaning for Chinese soccer fans — Zheng Zhi, former Chinese national team captain, played there for three seasons. As someone who stood out from an entire continent to compete in arguably the world's most competitive league, while few Asian players could survive (even now), Zheng's stint remains memorable.</p>
+            <p>QPR dominated possession early, but Charlton capitalized on rare chances, launching counterattacks after winning the ball back and creating shots while the visitors managed none. The match ended in a tedious 0-0 draw, but what intrigued us were the fans' chants, yelling different words and lines for every situation: goal kicks, quality defense, and the opponent's mistakes.</p>
+            <p>At halftime, we stepped out for food and beer, discussing the UK rule against bringing drinks into the stands. Some Americans — you can tell from their accents — passed by, later sitting near us. They verbally sparred with QPR fans across the way, cheering for Charlton with... American football gestures.</p>
+            <p>Were they Charlton supporters? Absolutely no. Just random American expats in London who showed up because it was "Friday Football Night". Sounds American, right?</p>
+            <p>But these moments revealed something profound: identity.</p>
+            <p>Before entering the stadium, we crossed through Charlton's residential streets, watching households emerge from their homes and march toward the ground. As we entered the area regulated by mounted police, who patrolled and separated home and away fans, supporters began singing everything good about their team while mocking QPR.</p>
+            <p>It reminded me of our Spurs tour. Though the stadium was empty, our guide Nick Burns, who's been a lifelong Spurs advocate, knew every detail of the facility. More than that, he expressed unwavering loyalty to the team, despite the Spurs being fairly mediocre over a decade, having just broken their title drought in 2025 with the Europa League, their first trophy since the 2008 League Cup and only their second this century.</p>
+            <p>From that moment, I understood the connection to a club — that its starting point, where you fall in love beyond the glory, shapes identity. Our Medill Explores shepherd, Candy Lee, mentioned that people in the UK often identify themselves by which club they support before anything else.</p>
+            <p>Thinking back to myself and my Liverpool FC fandom. Though I have no roots in Merseyside and I've never been there, I've identified as a Kop since I first saw Luis Suárez revive Liverpool nearly a decade ago. I was mesmerized by the sea of red in the Anfield stands, surging like waves.</p>
+            <p>Those shallow early memories brought me into the world of football. And now, standing in the first row of The Valley, I finally understood what that meant.</p>`
+        },
+        { 
+            slug: "fourth-and-eight-fourth-and-four",
             emoji: "🏈", category: "Football", title: "Fourth and Eight. Fourth and Four.", 
             excerpt: "How moments of true excellence ended the lovable loser era in Bears history.", 
             date: "Jan. 19, 2026", author: "Ryan Hinske",
-            body: `<p> <p style='font-style: italic; font-size: 1.2rem; color: #b6a0d7; margin-bottom: 2rem;'>How moments of true excellence ended the lovable loser era in Bears history</p>
-            
-            <p style='margin-bottom: 1.5rem;'>Midwesterners know what "fake winter" is. As the Chicago Bears surged towards the playoffs, the city experienced record snowfall in November, then "fool's spring" in early January. The day before the Bears vs Packers Wild Card thriller at Soldier Field, temperatures reached 60 degrees.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Then came "second winter." Soldier Field gave way to a functioning snowglobe just an hour before kickoff. The temperatures presented a true test to players who had become more acclimated to domed stadiums up north.</p>
-
-            <p style='margin-bottom: 1.5rem;'>In the dead of winter, enter "Iceman."</p>
-
-            <p style='margin-bottom: 1.5rem;'>In the most streamed game in NFL history, the game-sealing wide receiver DJ Moore said it best: "When the lights are bright, he's brighter than them lights out there."</p>
-
-            <p style='margin-bottom: 1.5rem;'>"Iceman" is, of course, quarterback Caleb Williams. Williams said on FOX NFL Sunday in November he was cool with the nickname because "Ice is still. Ice is calm, but underneath is pure energy."</p>
-
-            <p style='margin-bottom: 1.5rem;'>On fourth and eight late in the fourth quarter, Williams rolled left, looking for a prayer. Rome Odunze was available near the far sideline, but to reach him, Williams was forced to cock his arm back on the run, open his body towards the receiver, and throw a pass so off balance it looked eerily similar to the "Jumpman" logo that has immortalized another Chicago legend.</p>
-
-            <p style='margin-bottom: 1.5rem;'>And yes, Caleb Williams could already be called a Chicago legend, but more on that soon.</p>
-
-            <p style='margin-bottom: 1.5rem;'>A week later, he did it again – this time on backpeddling away from multiple relentless Rams pass rushers and heaving a moonball to Cole Kmet in the back corner of the endzone on fourth and four.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Raised in a Cleveland sports household, I was not shocked when my Dad said, "I'm tired of waiting for the Browns to host a playoff game. Let's go see the Bears." So we did.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Browns and Bears fans understand each other. Of course my Dad had to sport his Browns cap in Chicago, and Bears fans were nice to him "as long as he's not a cheesehead." Just two years ago I was at a Browns versus Bears game in Cleveland, where there was remarkably little hostility between the fanbases. Why? Because they're lovable losers. It's cute when they make a little run with fun players like Baker Mayfield and Caleb Williams.</p>
-
-            <p style='margin-bottom: 1.5rem;'>That all ended in front of my father's eyes on fourth and eight. In a strange way, it was like his Browns fandom reversed the bad juju that has tempered Soldier Field for years. When the Bears made poor plays in the first half, he felt their pain. When they stormed back and took the lead, it was a new feeling. And I think, for now, it bought him a little more patience and hope that Cleveland's day will come.</p>
-
-            <p style='margin-bottom: 1.5rem;'>For both teams, it has to start with the quarterback. Since Jim McMahon – the quarterback that led a defensive-heavy Bears team to its lone Super Bowl victory – was traded to the Chargers, 39 starting quarterships have tried and failed to cement their names into true Bears legend.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Fans and analysts like to talk about "flashes." Though Williams's rookie season doesn't jump out of the stat sheet, we heard plenty of, "we've seen flashes."</p>
-
-            <p style='margin-bottom: 1.5rem;'>The pair of fourth downs that bent both the laws of physics and the minds of just about every football fan soars far beyond flashes. These are moments. Moments define careers. They build dynasties.</p>
-
-            <p style='margin-bottom: 1.5rem;'>This is how Kansas City built theirs. Patrick Mahomes won an MVP in his second season by throwing for 50 touchdowns and leading the Chiefs to a 12-4 record. But Williams has more than doubled Mahomes's game-winning drives in their first two full seasons.</p>
-
-            <p style='margin-bottom: 1.5rem;'>In Mahomes's first full season, he played two playoff games and suffered a crushing overtime loss to Tom Brady in the Patriots. In Williams's second, he and his Bears fell in overtime to a Rams team that has been no stranger to winning big playoff games with Matthew Stafford.</p>
-
-            <p style='margin-bottom: 1.5rem;'>I'm not trying to compare Williams to Mahomes – he's got eons to go to even sniff Mahomes's success – but when it comes to the moments, Williams is already building a legacy no Chicago quarterback has ever built. And I mean ever.</p>
-
-            <p style='margin-bottom: 1.5rem;'>Yes, there were interceptions. Probably a few too many foolish throws. But Caleb Williams is never out of the game, and the Bears fanbase will never forget the 2025 season. And that is a feeling thousands of young Chicago fans have never experienced.</p>
-
-            <p style='margin-bottom: 1.5rem;'>The bear has spent many winters in hibernation. It took the Iceman to finally wake him up.</p></p>`
+            body: `
+            <p style='font-style: italic; font-size: 1.2rem; color: #b6a0d7; margin-bottom: 2rem;'>How moments of true excellence ended the lovable loser era in Bears history</p>
+            <p>Midwesterners know what "fake winter" is. As the Chicago Bears surged towards the playoffs, the city experienced record snowfall in November, then "fool's spring" in early January. The day before the Bears vs Packers Wild Card thriller at Soldier Field, temperatures reached 60 degrees.</p>
+            <p>Then came "second winter." Soldier Field gave way to a functioning snowglobe just an hour before kickoff. The temperatures presented a true test to players who had become more acclimated to domed stadiums up north.</p>
+            <p>In the dead of winter, enter "Iceman."</p>
+            <p>In the most streamed game in NFL history, the game-sealing wide receiver DJ Moore said it best: "When the lights are bright, he's brighter than them lights out there."</p>
+            <p>"Iceman" is, of course, quarterback Caleb Williams. Williams said on FOX NFL Sunday in November he was cool with the nickname because "Ice is still. Ice is calm, but underneath is pure energy."</p>
+            <p>On fourth and eight late in the fourth quarter, Williams rolled left, looking for a prayer. Rome Odunze was available near the far sideline, but to reach him, Williams was forced to cock his arm back on the run, open his body towards the receiver, and throw a pass so off balance it looked eerily similar to the "Jumpman" logo that has immortalized another Chicago legend.</p>
+            <p>And yes, Caleb Williams could already be called a Chicago legend, but more on that soon.</p>
+            <p>A week later, he did it again – this time on backpeddling away from multiple relentless Rams pass rushers and heaving a moonball to Cole Kmet in the back corner of the endzone on fourth and four.</p>
+            <p>Raised in a Cleveland sports household, I was not shocked when my Dad said, "I'm tired of waiting for the Browns to host a playoff game. Let's go see the Bears." So we did.</p>
+            <p>Browns and Bears fans understand each other. Of course my Dad had to sport his Browns cap in Chicago, and Bears fans were nice to him "as long as he's not a cheesehead." Just two years ago I was at a Browns versus Bears game in Cleveland, where there was remarkably little hostility between the fanbases. Why? Because they're lovable losers. It's cute when they make a little run with fun players like Baker Mayfield and Caleb Williams.</p>
+            <p>That all ended in front of my father's eyes on fourth and eight. In a strange way, it was like his Browns fandom reversed the bad juju that has tempered Soldier Field for years. When the Bears made poor plays in the first half, he felt their pain. When they stormed back and took the lead, it was a new feeling. And I think, for now, it bought him a little more patience and hope that Cleveland's day will come.</p>
+            <p>For both teams, it has to start with the quarterback. Since Jim McMahon – the quarterback that led a defensive-heavy Bears team to its lone Super Bowl victory – was traded to the Chargers, 39 starting quarterships have tried and failed to cement their names into true Bears legend.</p>
+            <p>Fans and analysts like to talk about "flashes." Though Williams's rookie season doesn't jump out of the stat sheet, we heard plenty of, "we've seen flashes."</p>
+            <p>The pair of fourth downs that bent both the laws of physics and the minds of just about every football fan soars far beyond flashes. These are moments. Moments define careers. They build dynasties.</p>
+            <p>This is how Kansas City built theirs. Patrick Mahomes won an MVP in his second season by throwing for 50 touchdowns and leading the Chiefs to a 12-4 record. But Williams has more than doubled Mahomes's game-winning drives in their first two full seasons.</p>
+            <p>In Mahomes's first full season, he played two playoff games and suffered a crushing overtime loss to Tom Brady in the Patriots. In Williams's second, he and his Bears fell in overtime to a Rams team that has been no stranger to winning big playoff games with Matthew Stafford.</p>
+            <p>I'm not trying to compare Williams to Mahomes – he's got eons to go to even sniff Mahomes's success – but when it comes to the moments, Williams is already building a legacy no Chicago quarterback has ever built. And I mean ever.</p>
+            <p>Yes, there were interceptions. Probably a few too many foolish throws. But Caleb Williams is never out of the game, and the Bears fanbase will never forget the 2025 season. And that is a feeling thousands of young Chicago fans have never experienced.</p>
+            <p>The bear has spent many winters in hibernation. It took the Iceman to finally wake him up.</p>`
         },
-        { emoji: "⚽", category: "Soccer", title: "Transfer Window Update", excerpt: "The biggest moves across Europe.", date: "Jan 17, 2026" }
+        { 
+            slug: "transfer-window-update",
+            emoji: "⚽", category: "Soccer", title: "Transfer Window Update", 
+            excerpt: "The biggest moves across Europe.", 
+            date: "Jan 17, 2026"
+        }
     ];
 
     const podcasts = [
@@ -432,39 +375,103 @@
         { title: "Center Cup", image: "https://lh3.googleusercontent.com/pw/AP1GczNU_x40BE-OkSBwnn_H5gJZ7k0dSj7YzQVks0taA-ACMQo6YRzwoHA8VoTdZT18hyMRhGDA1T9SkDzlisKtrk-3K2O4PnjAiLp30dOA_flZBuIXtIFED0UPjfKNkxpHAeq8tAFXRf41fa5tE=w1920-h1080-s-no-gm?authuser=0", link: "https://youtube.com/playlist?list=PLyZG2tQyljiueaEdp9F6o9FTN_Sh9ILkR&si=H8i1dV7WS_6NHuXG" }
     ];
 
-    // --- LOGIC ---
-    function init() {
-        renderPreviews();
-        renderPodcasts();
-        animateHeroText();
+    // ---- ROUTER ----
+    function getParams() {
+        return new URLSearchParams(window.location.search);
     }
 
-    function renderPreviews() {
-        const previewGrid = document.getElementById('previewGrid');
-        previewGrid.innerHTML = articles.slice(0, 4).map((art, idx) => `
-            <div class="article-card" onclick="openArticle(${idx})">
+    function route() {
+        const params = getParams();
+        const page = params.get('page');
+        const articleSlug = params.get('article');
+
+        document.getElementById('homePage').style.display = 'none';
+        document.getElementById('articlesPage').style.display = 'none';
+        document.getElementById('articlePage').style.display = 'none';
+
+        if (articleSlug) {
+            const art = articles.find(a => a.slug === articleSlug);
+            if (art) { renderArticlePage(art); return; }
+        }
+        if (page === 'articles') {
+            renderArticlesListPage();
+            return;
+        }
+        renderHomePage();
+    }
+
+    function renderHomePage() {
+        document.getElementById('homePage').style.display = 'block';
+        document.title = 'The 303 | Daily Sports Content';
+
+        document.getElementById('previewGrid').innerHTML = articles.slice(0, 4).map(art => `
+            <a class="article-card" href="?article=${art.slug}">
                 <div class="article-image">${art.emoji}</div>
                 <div class="article-content">
                     <div class="article-category">${art.category}</div>
                     <h3 class="article-title">${art.title}</h3>
-                    <p class="article-excerpt">${art.excerpt}</p>
+                    <p class="article-excerpt">${art.excerpt || ''}</p>
                 </div>
+            </a>
+        `).join('');
+
+        document.getElementById('podcastGrid').innerHTML = podcasts.map((pod, idx) => `
+            <div class="podcast-card" onclick="openPodcast(${idx})">
+                <div class="podcast-icon"><img src="${pod.image}" alt="${pod.title}"></div>
+                <h3 class="podcast-title">${pod.title}</h3>
             </div>
+        `).join('');
+
+        animateHeroText();
+    }
+
+    function renderArticlesListPage() {
+        document.getElementById('articlesPage').style.display = 'block';
+        document.title = 'Articles | The 303';
+
+        document.getElementById('fullArticlesGrid').innerHTML = articles.map(art => `
+            <a class="article-card" href="?article=${art.slug}">
+                <div class="article-image">${art.emoji}</div>
+                <div class="article-content">
+                    <div class="article-category">${art.category}</div>
+                    <h3 class="article-title">${art.title}</h3>
+                    <p class="article-excerpt">${art.excerpt || ''}</p>
+                </div>
+            </a>
         `).join('');
     }
 
-    function renderPodcasts() {
-       const podGrid = document.getElementById('podcastGrid');
-    podGrid.innerHTML = podcasts.map((pod, idx) => `
-        <div class="podcast-card" onclick="openPodcast(${idx})">
-            <div class="podcast-icon">
-                <img src="${pod.image}" alt="${pod.title}">
-            </div>
-            <h3 class="podcast-title">${pod.title}</h3>
-        </div>
-    `).join('');
-}
+    function renderArticlePage(art) {
+        document.getElementById('articlePage').style.display = 'block';
+        document.title = `${art.title} | The 303`;
 
+        let titleHtml;
+        if (art.slug === 'fourth-and-eight-fourth-and-four') {
+            titleHtml = `
+                <div class="headline-stack">
+                    <div class="bg-text">Fourth and Eight</div>
+                    <div class="fg-text">Fourth and Four</div>
+                </div>`;
+        } else {
+            titleHtml = `<h2 class="section-title" style="text-align:left; font-size: 2rem; margin-bottom: 0.5rem;">${art.title}</h2>`;
+        }
+
+        document.getElementById('articlePageContent').innerHTML = `
+            ${titleHtml}
+            <div style="text-align:center; margin-bottom:2.5rem;">
+                <p style="color:#ff6b35; font-weight:bold; text-transform:uppercase; margin-bottom:0.2rem;">
+                    ${art.category} | ${art.date}
+                </p>
+                <p style="color:#b6a0d7; font-style:italic; font-size:0.9rem;">
+                    By ${art.author || "The 303 Staff"}
+                </p>
+            </div>
+            <div class="article-full-body">${art.body || `<p>${art.excerpt}</p>`}</div>
+        `;
+        window.scrollTo(0, 0);
+    }
+
+    // ---- PODCASTS ----
     function openPodcast(idx) {
         const pod = podcasts[idx];
         document.getElementById('podcastContent').innerHTML = `
@@ -476,68 +483,19 @@
         `;
         document.getElementById('podcastModal').style.display = 'block';
     }
+    function closePodcastModal() { document.getElementById('podcastModal').style.display = 'none'; }
+    window.onclick = e => { if (e.target.id === 'podcastModal') closePodcastModal(); };
 
-    // Modal, Navigation, and Animation Helpers
-    function showHome() {
-        document.getElementById('homePage').style.display = 'block';
-        document.getElementById('articlesPage').style.display = 'none';
-        window.scrollTo(0, 0);
+    // ---- NEWSLETTER ----
+    function handleSubscribe(e) {
+        e.preventDefault();
+        document.getElementById('successMessage').classList.add('show');
+        e.target.reset();
     }
 
-    function showArticlesPage() {
-        document.getElementById('homePage').style.display = 'none';
-        document.getElementById('articlesPage').style.display = 'block';
-        const fullGrid = document.getElementById('fullArticlesGrid');
-        fullGrid.innerHTML = articles.map((art, idx) => `
-            <div class="article-card" onclick="openArticle(${idx})">
-                <div class="article-image">${art.emoji}</div>
-                <div class="article-content">
-                    <div class="article-category">${art.category}</div>
-                    <h3 class="article-title">${art.title}</h3>
-                </div>
-            </div>
-        `).join('');
-        window.scrollTo(0, 0);
-    }
-
-    function openArticle(idx) {
-        const art = articles[idx];
-        let titleHtml;
-
-        if (art.title.includes("Fourth and Eight")) {
-            titleHtml = `
-                <div class="headline-stack">
-                    <div class="bg-text">Fourth and Eight</div>
-                    <div class="fg-text">Fourth and Four</div>
-                </div>`;
-        } else {
-            titleHtml = `<h2 class="section-title" style="text-align:left; font-size: 2rem; margin-bottom: 0.5rem;">${art.title}</h2>`;
-        }
-        document.getElementById('articleContent').innerHTML = `
-        ${titleHtml}
-        <div style="text-align:center; margin-bottom:2rem;">
-            <p style="color:#ff6b35; font-weight:bold; text-transform:uppercase; margin-bottom:0.2rem;">
-                ${art.category} | ${art.date}
-            </p>
-            <p style="color:#b6a0d7; font-style:italic; font-size:0.9rem;">
-                By ${art.author || "The 303 Staff"}
-            </p>
-        </div>
-        <div style="font-size:1.05rem; line-height:1.8; color: #e0e0e0;">${art.body || art.excerpt}</div>
-    `;
-    document.getElementById('articleModal').style.display = 'block';
-}
-
-    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-    
-    window.onclick = function(event) {
-        if (event.target.className === 'modal') { event.target.style.display = "none"; }
-    }
-
-    // Hero Text Animation
+    // ---- HERO ANIMATION ----
     const words = ["Sports", "Football", "Basketball", "Baseball", "Soccer", "Hockey", "Analytics"];
     let wordIdx = 0, charIdx = 0, isDeleting = false;
-
     function animateHeroText() {
         const target = document.getElementById("rotate-text");
         if (!target) return;
@@ -550,7 +508,9 @@
         setTimeout(animateHeroText, typeSpeed);
     }
 
-    document.addEventListener('DOMContentLoaded', init);
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', route);
+    document.addEventListener('DOMContentLoaded', route);
 </script>
 </body>
 </html>
